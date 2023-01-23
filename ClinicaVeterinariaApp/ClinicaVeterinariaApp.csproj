@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,11 +138,18 @@
     <Compile Include="Migrations\202301231113122_InitialCreate.designer.cs">
       <DependentUpon>202301231113122_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301231155270_RolesTabRemoved.cs" />
+    <Compile Include="Migrations\202301231155270_RolesTabRemoved.designer.cs">
+      <DependentUpon>202301231155270_RolesTabRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301231220035_AddedUserLoginPersistence.cs" />
+    <Compile Include="Migrations\202301231220035_AddedUserLoginPersistence.designer.cs">
+      <DependentUpon>202301231220035_AddedUserLoginPersistence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animals.cs" />
     <Compile Include="Models\Exams.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
-    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Species.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +225,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -229,6 +238,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202301231113122_InitialCreate.resx">
       <DependentUpon>202301231113122_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301231155270_RolesTabRemoved.resx">
+      <DependentUpon>202301231155270_RolesTabRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301231220035_AddedUserLoginPersistence.resx">
+      <DependentUpon>202301231220035_AddedUserLoginPersistence.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

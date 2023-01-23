@@ -19,8 +19,14 @@ namespace ClinicaVeterinariaApp.Models
         [StringLength(20)]
         public string Password { get; set; }
 
-        public int RoleID { get; set; }
+        [StringLength(20)]
+        public string Role { get; set; }
 
-        public virtual Roles Roles { get; set; }
+        [Display(Name ="Tienimi collegato")]
+        public bool RememberMe { get; set; }
+
+        //public int RoleID { get; set; }
+
+        //public virtual Roles Roles { get; set; }
     }
 }
