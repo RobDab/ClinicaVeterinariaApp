@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ClinicaVeterinariaApp.Models.Animals>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista Animali</h2>
+
+<p>
+    @Html.ActionLink("Aggiungi un nuovo animale", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Species.Specie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChipNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasOwner)
+        </th>
+        <th>Gestione</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Species.Specie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChipNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasOwner)
+        </td>
+        <td>
+            @Html.ActionLink("Storia medica", "Details", new { id=item.IDAnimal }) |
+            @Html.ActionLink("Modifica", "Edit", new { id=item.IDAnimal }) |
+            @Html.ActionLink("Cancella", "Delete", new { id=item.IDAnimal })
+        </td>
+    </tr>
+}
+
+</table>

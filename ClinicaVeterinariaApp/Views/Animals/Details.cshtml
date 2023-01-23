@@ -1,0 +1,92 @@
+﻿@model ClinicaVeterinariaApp.Models.Animals
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="col-5">
+                <h4>Dettagli Animale </h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Species.Specie)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Species.Specie)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Color)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BirthDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RegisterDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RegisterDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ChipNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ChipNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HasOwner)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HasOwner)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OwnerName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OwnerName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OwnerLastname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OwnerLastname)
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="col-5">
+                @{
+                    Html.RenderAction("_VisitList", "Exams", new { id = Model.IDAnimal });
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Torna alla lista degli animali", "Index")
+</p>
