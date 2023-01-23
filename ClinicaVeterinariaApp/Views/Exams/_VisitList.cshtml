@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ClinicaVeterinariaApp.Models.Exams>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.ExamDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamNotes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamNotes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExamID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExamID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExamID })
+        </td>
+    </tr>
+}
+
+</table>

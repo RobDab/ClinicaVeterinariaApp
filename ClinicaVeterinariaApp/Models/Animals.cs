@@ -18,26 +18,36 @@ namespace ClinicaVeterinariaApp.Models
         public int IDAnimal { get; set; }
 
         [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime RegisterDate { get; set; }
 
         [Required]
         [StringLength(20)]
+        [Display(Name = "Nome")]
         public string Name { get; set; }
 
+        [Display(Name = "Tipologia")]
         public int SpecieID { get; set; }
 
         [Required]
         [StringLength(20)]
+        [Display(Name = "Colore")]
         public string Color { get; set; }
 
         [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data di nascita")]
         public DateTime BirthDate { get; set; }
 
         public bool HasChip { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Codice microchip")]
         public string ChipNumber { get; set; }
 
+        [Display(Name = "Padrone?")]
         public bool HasOwner { get; set; }
 
         [StringLength(20)]

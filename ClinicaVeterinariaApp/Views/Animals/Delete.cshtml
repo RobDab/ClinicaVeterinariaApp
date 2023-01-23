@@ -1,0 +1,112 @@
+﻿@model ClinicaVeterinariaApp.Models.Animals
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Animals</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Species.Specie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Species.Specie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasChip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasChip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChipNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerLastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerLastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlPhoto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
