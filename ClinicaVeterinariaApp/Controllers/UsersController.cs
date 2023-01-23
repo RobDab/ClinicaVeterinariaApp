@@ -11,16 +11,19 @@ using ClinicaVeterinariaApp.Models;
 
 namespace ClinicaVeterinariaApp.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
 
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(Users user)
         {
@@ -43,7 +46,7 @@ namespace ClinicaVeterinariaApp.Controllers
             return View();
         }
 
-
+        
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
@@ -53,31 +56,32 @@ namespace ClinicaVeterinariaApp.Controllers
 
 
         // GET: Users
+        
         public ActionResult Index()
         {
             
             return View(db.Users.ToList());
         }
 
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Users users = db.Users.Find(id);
-            if (users == null)
-            {
-                return HttpNotFound();
-            }
-            return View(users);
-        }
+     
 
         // GET: Users/Create
-        public ActionResult Create()
+        public ActionResult SignIn()
         {
-            
+            List<SelectListItem> RolesList = new List<SelectListItem>();
+
+            SelectListItem adminRole = new SelectListItem();
+            adminRole.Text = "admin";
+            adminRole.Value = "admin";
+            RolesList.Add(adminRole);
+
+            SelectListItem userRole = new SelectListItem();
+            userRole.Text = "user";
+            userRole.Value = "user";
+            RolesList.Add(userRole);
+
+            ViewBag.RolesList = RolesList;
+            TempData["RolesList"] = RolesList;
             return View();
         }
 
@@ -86,17 +90,33 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,Username,Password,RoleID")] Users users)
+        public ActionResult SignIn([Bind(Include = "UserID,Username,Password,Role")] Users user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(users);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int dbCount = db.Users.Where(u => u.Username == user.Username).Count();
+                if(dbCount == 0)
+                {
+
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.UserExists = "Username non disponibile, provane uno nuovo!";
+                    ViewBag.RolesList = TempData["RolesList"];
+
+                    return View();
+                }
+
+                
+                
             }
 
             
-            return View(users);
+            return View(user);
         }
 
         // GET: Users/Edit/5

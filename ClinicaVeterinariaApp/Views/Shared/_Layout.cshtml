@@ -51,8 +51,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="d-flex justify-content-between">
             <p>&copy; @DateTime.Now.Year - Clinica Vetrinaria</p>
+            @if (User.IsInRole("admin"))
+            {
+                <a href="@Url.Action("SignIn", "Users")" class="btn btn-link">Gestione Dipendenti</a>
+            }
+
         </footer>
     </div>
 
