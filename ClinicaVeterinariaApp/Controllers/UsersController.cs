@@ -26,6 +26,7 @@ namespace ClinicaVeterinariaApp.Controllers
         {
             int dbCount = db.Users.Where(u => u.Username == user.Username).Count();
             if(dbCount != 0)
+
             {
                 Users dbUser = db.Users.Where(u => u.Username == user.Username).First();
                 if (user.Password == dbUser.Password)
@@ -41,6 +42,16 @@ namespace ClinicaVeterinariaApp.Controllers
 
             return View();
         }
+
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","Home");
+        }
+
+
+
         // GET: Users
         public ActionResult Index()
         {
