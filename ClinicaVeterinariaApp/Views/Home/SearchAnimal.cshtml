@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "SearchAnimal";
+}
+
+@*<div id="hide">
+    <p id="stringViewBag">@ViewBag.JsonErr</p> 
+
+</div>*@
+
+
+
+<h2>SearchAnimal</h2>
+
+<input type="text" id="stringChip" /> <button id="Search">Cerca</button>
+
+<div id="append"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#hide").hide();
+
+        $("#Search").click(function () {
+
+            var codiceChip = $("#stringChip").val();
+
+            //var VBag = $("#stringViewBag").html();
+
+            $.ajax({
+                method: 'GET',
+                data: { 'strChip': codiceChip },
+                dataType: "json",
+                url: 'GetAnimal',
+                success: function (animal) {
+
+                    $("#append").append("<p>" + animal.Name + "</p>");
+                },
+                error: function() {
+
+                    //$("#append").append("<p>" + VBag + "</p>");
+                    $("#append").append("<p> Errore, animale non trovato</p>");
+
+
+                }
+
+            })
+
+
+        })
+    })
+
+</script>

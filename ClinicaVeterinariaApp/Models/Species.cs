@@ -15,6 +15,7 @@ namespace ClinicaVeterinariaApp.Models
         }
 
         [Key]
+        [Display(Name = "Specie")]
         public int SpecieID { get; set; }
 
         [Required]

@@ -57,6 +57,7 @@ namespace ClinicaVeterinariaApp.Models
         [Display(Name = "Data di nascita")]
         public DateTime BirthDate { get; set; }
 
+        [Display(Name = "Chip?")]
         public bool HasChip { get; set; }
 
         [StringLength(10)]
