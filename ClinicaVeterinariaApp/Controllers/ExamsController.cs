@@ -45,9 +45,9 @@ namespace ClinicaVeterinariaApp.Controllers
         }
 
         // GET: Exams/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.IDAnimal = new SelectList(db.Animals, "IDAnimal", "Name");
+            
             return View();
         }
 
@@ -56,13 +56,15 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExamID,IDAnimal,ExamDate,Exam,ExamNotes")] Exams exams)
+        public ActionResult Create([Bind(Include = "ExamID,ExamDate,Exam,ExamNotes")] Exams exams, int id)
         {
             if (ModelState.IsValid)
             {
+                exams.IDAnimal = id;
+                exams.ExamDate= DateTime.Now;
                 db.Exams.Add(exams);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","Animals", new {id = id});
             }
 
             ViewBag.IDAnimal = new SelectList(db.Animals, "IDAnimal", "Name", exams.IDAnimal);
