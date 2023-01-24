@@ -49,13 +49,25 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,UrlPhoto")] Animals animals)
+        public ActionResult Create([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
         {
             if (ModelState.IsValid)
             {
-                db.Animals.Add(animals);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (animals.FileFoto != null)
+                {
+                    string path = Server.MapPath("/Content/FileUpload/" + animals.FileFoto.FileName);
+                    animals.FileFoto.SaveAs(path);
+                    animals.UrlPhoto = animals.FileFoto.FileName;
+                    db.Animals.Add(animals);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    db.Animals.Add(animals);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.SpecieID = new SelectList(db.Species, "SpecieID", "Specie", animals.SpecieID);
@@ -75,6 +87,16 @@ namespace ClinicaVeterinariaApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.SpecieID = new SelectList(db.Species, "SpecieID", "Specie", animals.SpecieID);
+
+            if(animals.UrlPhoto != null)
+            {
+
+                TempData["UrlImg"] = animals.UrlPhoto;
+            }
+            else
+            {
+                TempData["UrlImg"] = "No foto";
+            }
             return View(animals);
         }
 
@@ -83,13 +105,25 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,UrlPhoto")] Animals animals)
+        public ActionResult Edit([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
         {
             if (ModelState.IsValid)
             {
+                if(animals.FileFoto == null)
+                {
+                    animals.UrlPhoto = TempData["UrlImg"].ToString();
+                }
+                else
+                {
+                    string path = Server.MapPath("/Content/FileUpload/" + animals.FileFoto.FileName);
+                    animals.FileFoto.SaveAs(path);
+                    animals.UrlPhoto = animals.FileFoto.FileName;
+                }
+
                 db.Entry(animals).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
             ViewBag.SpecieID = new SelectList(db.Species, "SpecieID", "Specie", animals.SpecieID);
             return View(animals);
