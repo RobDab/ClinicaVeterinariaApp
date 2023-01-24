@@ -30,9 +30,11 @@ namespace ClinicaVeterinariaApp.Controllers
                 {
                     Name = animal.Name,
                     Color = animal.Color,
-                    HasChip = animal.HasChip,
                     HasOwner = animal.HasOwner,
-                    ChipNumber = animal.ChipNumber,
+                    UrlPhoto= animal.UrlPhoto,
+                    BirthDate= animal.BirthDate,
+                    RegisterDate= animal.RegisterDate,
+
                 };
                 return Json(animalToReturn, JsonRequestBehavior.AllowGet);
                 }
