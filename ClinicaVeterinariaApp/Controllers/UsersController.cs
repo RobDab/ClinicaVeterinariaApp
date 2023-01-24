@@ -46,7 +46,7 @@ namespace ClinicaVeterinariaApp.Controllers
             return View();
         }
 
-        
+        [AllowAnonymous]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
@@ -60,6 +60,7 @@ namespace ClinicaVeterinariaApp.Controllers
         public ActionResult Index()
         {
             
+
             return View(db.Users.ToList());
         }
 
@@ -150,6 +151,9 @@ namespace ClinicaVeterinariaApp.Controllers
             }
             return View(users);
         }
+
+
+        
 
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
