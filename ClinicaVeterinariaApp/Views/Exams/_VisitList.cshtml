@@ -21,6 +21,7 @@
         
         <td>
             @Html.DisplayFor(modelItem => item.ExamDate)
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Exam)
@@ -29,7 +30,7 @@
             @Html.DisplayFor(modelItem => item.ExamNotes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ExamID }) |
+            @Html.ActionLink("Aggiorna", "Edit", new { id=item.ExamID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ExamID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ExamID })
         </td>
