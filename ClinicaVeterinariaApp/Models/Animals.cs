@@ -5,6 +5,7 @@ namespace ClinicaVeterinariaApp.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class Animals
     {
@@ -17,10 +18,25 @@ namespace ClinicaVeterinariaApp.Models
         [Key]
         public int IDAnimal { get; set; }
 
+        private DateTime _registerDate;
+
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime RegisterDate { get; set; }
+        public DateTime RegisterDate 
+        {
+
+            get
+            {
+                return this._registerDate;
+            }
+            
+            set
+            {
+                _registerDate = DateTime.Now;
+
+            }
+        }
 
         [Required]
         [StringLength(20)]
@@ -59,6 +75,8 @@ namespace ClinicaVeterinariaApp.Models
         [StringLength(15)]
         public string UrlPhoto { get; set; }
 
+        [NotMapped()]
+        public HttpPostedFileBase FileFoto { get; set; }
         public virtual Species Species { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

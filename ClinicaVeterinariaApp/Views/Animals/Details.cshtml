@@ -9,6 +9,17 @@
             <div class="col-5">
                 <h4>Dettagli Animale </h4>
                 <hr />
+
+                @{
+                    if (!Model.HasOwner)
+                    {
+                                <div class="text-center" id="ImgAnimals">
+                                    <img src="~/Content/FileUpload/@Model.UrlPhoto" alt="Immagine animale" />
+                                </div>
+                    }
+                }
+                
+
                 <dl class="dl-horizontal">
                     <dt>
                         @Html.DisplayNameFor(model => model.Name)
@@ -90,3 +101,4 @@
 <p>
     @Html.ActionLink("Torna alla lista degli animali", "Index")
 </p>
+
