@@ -40,9 +40,10 @@
                 dataType: "json",
                 url: 'GetAnimal',
                 success: function (animal) {
-
-                    $("#append").append(`< img src ="/Content/FileUpload/${animal.UrlPhoto}"/> <br /> `);
-                    $("#appendDD").append(`<dt> Nome </dt>  <dd> ${animal.Name}</dd> <dt> Colore </dt> <dd>${animal.Color}</dd><dt>Data nascita</dt> <dd>${animal.BirthDate.ToString("d")}</dd><dt>Data refistrazione</dt><dd>${animal.RegisterDate}</dd >`);
+                    console.log(animal);
+                    $("#append").append("<img src=\"/Content/FileUpload/"+animal.UrlPhoto+"\" /> <br /> ");
+                    $("#appendDD").append("<dt> Nome </dt>  <dd>" + animal.Name + "</dd> <dt> Colore </dt> <dd>" + animal.Color + "</dd><dt>Data nascita</dt> <dd>" + animal.BirthDate + "</dd><dt>Data registrazione</dt><dd>" + animal.RegisterDate +"</dd >");
+                    //$("#appendDD").append(`<dt> Nome </dt>  <dd> ${animal.Name} </dd> <dt> Colore </dt> <dd> ${animal.Color}</dd><dt>Data nascita</dt> <dd>${animal.BirthDate.toLocaleDateString()}</dd><dt>Data registrazione</dt><dd>${animal.RegisterDate.toLocaleDateString()}</dd >`);
 
                 },
                 error: function () {
