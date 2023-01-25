@@ -28,16 +28,28 @@ namespace ClinicaVeterinariaApp.Controllers
                 Animals animal = db.Animals.Where(a => a.ChipNumber == strChip).FirstOrDefault();
                 if (animal != null)
                 {
-                    Animals animalToReturn = new Animals
+                    
+                    AnimalsJSON animalToReturn = new AnimalsJSON()
                     {
+                        IDAnimal = animal.IDAnimal,
+                        RegisterDate = animal.RegisterDate.ToString("d"),
+                        BirthDate = animal.BirthDate.ToString("d"),
                         Name = animal.Name,
+                        SpecieID = animal.SpecieID,
                         Color = animal.Color,
+                        ChipNumber = animal.ChipNumber,
                         HasOwner = animal.HasOwner,
-                        UrlPhoto = animal.UrlPhoto,
-                        BirthDate = animal.BirthDate,
-                        RegisterDate = animal.RegisterDate,
-
+                        UrlPhoto = animal.UrlPhoto
                     };
+
+                    if (animal.HasOwner)
+                    {
+                        animalToReturn.OwnerName = animal.OwnerName;
+                        animalToReturn.OwnerLastname = animal.OwnerLastname;    
+                    }
+
+
+
                     return Json(animalToReturn, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -59,24 +71,47 @@ namespace ClinicaVeterinariaApp.Controllers
             return View();
         }
 
-        public JsonResult GetAnimals(string ArrIdParam)
+        public JsonResult GetAnimals(int[] ArrIdParam)
         {
             try
             {
 
-                List<Animals> ListAnimal = new List<Animals>();
-
-                foreach (char SpecieID in ArrIdParam)
+                List<AnimalsJSON> ListAnimal = new List<AnimalsJSON>();
+                if (ArrIdParam.Count() > 0)
                 {
-                    int SpecieIDInt = (int)Char.GetNumericValue(SpecieID);
-                    List<Animals> animals = db.Animals.Where(a => a.SpecieID == SpecieIDInt && a.HasOwner == false).ToList();
-
-                    foreach (var animal in animals)
+                    foreach (int SpecieID in ArrIdParam)
                     {
-                        ListAnimal.Add(animal);
+
+                        List<Animals> animals = db.Animals.Where(a => a.SpecieID == SpecieID && a.HasOwner == false).ToList();
+
+                        foreach (Animals animal in animals)
+                        {
+                            AnimalsJSON animalToReturn = new AnimalsJSON()
+                            {
+                                IDAnimal = animal.IDAnimal,
+                                RegisterDate = animal.RegisterDate.ToString("d"),
+                                BirthDate = animal.BirthDate.ToString("d"),
+                                Name = animal.Name,
+                                SpecieID = animal.SpecieID,
+                                Color = animal.Color,
+                                HasChip = animal.HasChip,
+                                HasOwner = animal.HasOwner,
+                                UrlPhoto = animal.UrlPhoto
+                            };
+
+                            if (animal.HasChip)
+                            {
+                                animalToReturn.ChipNumber = animal.ChipNumber;
+                            }
+
+                            ListAnimal.Add(animalToReturn);
+                        }
                     }
                 }
-
+                else
+                {
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
                 
 
 
@@ -87,7 +122,7 @@ namespace ClinicaVeterinariaApp.Controllers
                 }
                 else
                 {
-                    ViewBag.JsonErr = "Animali non trovati!";
+                    
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }

@@ -3,10 +3,7 @@
     ViewBag.Title = "SearchAnimal";
 }
 
-@*<div id="hide">
-        <p id="stringViewBag">@ViewBag.JsonErr</p>
 
-    </div>*@
 
 
 <div class="container">
@@ -17,12 +14,16 @@
     <br />
     <button id="Search">Cerca</button>
 
-    <div id="append">
+    <div>
+        <div id="append" class="w-50">
+            
+        </div>
         <dl class="dl-horizontal" id="appendDD"></dl>
     </div>
 
 
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -32,7 +33,7 @@
 
             var codiceChip = $("#stringChip").val();
 
-            //var VBag = $("#stringViewBag").html();
+            
 
             $.ajax({
                 method: 'GET',
@@ -41,14 +42,15 @@
                 url: 'GetAnimal',
                 success: function (animal) {
                     console.log(animal);
-                    $("#append").append("<img src=\"/Content/FileUpload/"+animal.UrlPhoto+"\" /> <br /> ");
+                
+                    $("#append").append('<img id="chipSearchImg" src="/Content/FileUpload/' + animal.UrlPhoto + '"/>');
                     $("#appendDD").append("<dt> Nome </dt>  <dd>" + animal.Name + "</dd> <dt> Colore </dt> <dd>" + animal.Color + "</dd><dt>Data nascita</dt> <dd>" + animal.BirthDate + "</dd><dt>Data registrazione</dt><dd>" + animal.RegisterDate +"</dd >");
-                    //$("#appendDD").append(`<dt> Nome </dt>  <dd> ${animal.Name} </dd> <dt> Colore </dt> <dd> ${animal.Color}</dd><dt>Data nascita</dt> <dd>${animal.BirthDate.toLocaleDateString()}</dd><dt>Data registrazione</dt><dd>${animal.RegisterDate.toLocaleDateString()}</dd >`);
+                   
 
                 },
                 error: function () {
 
-                    //$("#append").append("<p>" + VBag + "</p>");
+                   
                     $("#append").append("<p> Errore, animale non trovato</p>");
 
                 }

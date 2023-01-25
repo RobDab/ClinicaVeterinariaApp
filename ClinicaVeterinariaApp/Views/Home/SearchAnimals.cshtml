@@ -22,36 +22,42 @@
     <button id="Search">Cerca</button>
 </div>
 
-<ul id="append"></ul>
+<div id="resultContainer" class="d-flex flex-wrap gap-3 justify-content-center">
+</div>
 
 <script>
     $(document).ready(function () {
 
         $("#Search").click(function () {
 
-            let ArrID = "";
+            let ArrID = [];
 
             $("input:checked").each(function () {
-               let ChkVal = parseInt($(this).val());
-               ArrID += ChkVal;
-               console.log(ArrID);
+                let ChkVal = parseInt($(this).val());
+                ArrID.push(ChkVal);
+               
            })
-            console.log(ArrID);
+            
+
             $.ajax({
-                method: 'GET',
+                method: 'POST',
                 data: { 'ArrIdParam': ArrID },
                 url: 'GetAnimals',
                 success: function (animals) {
-                    $.each(animals, function (index, value)
-                    {
+                    $("#resultContainer").empty();
 
-                        $("#append").append(`<li>${value.Name}</li>`)
+                    $.each(animals, function (index, value) {
+                        console.log(value.Name);
+                        $("#resultContainer").append('<div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + value.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title">' + value.Name +'</h5></div></div>');
+                    });
+                    
+                },
+                error: function () {
+                    $("#resultContainer").empty();
+                    $("#resultContainer").append("<p>Ops, nessun trovatello corrisponde ai filtri di Specie impostati.</p>");
 
-                    }) 
                 }
-
-                })
-
+            })
         })
 
     })

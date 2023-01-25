@@ -11,11 +11,15 @@ namespace ClinicaVeterinariaApp.Models
 
         public string RegisterDate { get; set; }
 
+        public string BirthDate { get; set; }
+
         public string Name { get; set; }
 
         public int SpecieID { get; set; }
 
         public string Color { get; set; }
+
+        public bool HasChip { get; set; }
 
         public string ChipNumber { get; set; }
 
