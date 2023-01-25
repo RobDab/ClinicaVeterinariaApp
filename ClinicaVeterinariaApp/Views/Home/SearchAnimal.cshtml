@@ -4,17 +4,25 @@
 }
 
 @*<div id="hide">
-    <p id="stringViewBag">@ViewBag.JsonErr</p> 
+        <p id="stringViewBag">@ViewBag.JsonErr</p>
 
-</div>*@
+    </div>*@
 
 
+<div class="container">
 
-<h2>SearchAnimal</h2>
+    <h2>Cerca animale smarrito tramite chip</h2>
 
-<input type="text" id="stringChip" /> <button id="Search">Cerca</button>
+    <input type="text" id="stringChip" />
+    <br />
+    <button id="Search">Cerca</button>
 
-<div id="append"></div>
+    <div id="append">
+        <dl class="dl-horizontal" id="appendDD"></dl>
+    </div>
+
+
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -33,13 +41,14 @@
                 url: 'GetAnimal',
                 success: function (animal) {
 
-                    $("#append").append("<p>" + animal.Name + "</p>");
+                    $("#append").append(`< img src ="/Content/FileUpload/${animal.UrlPhoto}"/> <br /> `);
+                    $("#appendDD").append(`<dt> Nome </dt>  <dd> ${animal.Name}</dd> <dt> Colore </dt> <dd>${animal.Color}</dd><dt>Data nascita</dt> <dd>${animal.BirthDate.ToString("d")}</dd><dt>Data refistrazione</dt><dd>${animal.RegisterDate}</dd >`);
+
                 },
-                error: function() {
+                error: function () {
 
                     //$("#append").append("<p>" + VBag + "</p>");
                     $("#append").append("<p> Errore, animale non trovato</p>");
-
 
                 }
 

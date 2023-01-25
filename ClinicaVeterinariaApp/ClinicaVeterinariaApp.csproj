@@ -245,6 +245,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Home\SearchAnimal.cshtml" />
+    <Content Include="Views\Home\SearchAnimals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

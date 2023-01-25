@@ -1,0 +1,60 @@
+﻿@model ClinicaVeterinariaApp.Models.Animals
+
+@{
+    ViewBag.Title = "SearchAnimals";
+}
+
+<h2>SearchAnimals</h2>
+
+<div class="d-flex flex-column">
+
+
+@foreach (var item in ViewBag.SpecieList)
+{
+    <div>
+
+    <label for="@item.SpecieID">@item.Specie</label>
+    <input type="checkbox" value="@item.SpecieID" id="@item.SpecieID" />
+
+    </div>
+}
+
+    <button id="Search">Cerca</button>
+</div>
+
+<ul id="append"></ul>
+
+<script>
+    $(document).ready(function () {
+
+        $("#Search").click(function () {
+
+            let ArrID = "";
+
+            $("input:checked").each(function () {
+               let ChkVal = parseInt($(this).val());
+               ArrID += ChkVal;
+               console.log(ArrID);
+           })
+            console.log(ArrID);
+            $.ajax({
+                method: 'GET',
+                data: { 'ArrIdParam': ArrID },
+                url: 'GetAnimals',
+                success: function (animals) {
+                    $.each(animals, function (index, value)
+                    {
+
+                        $("#append").append(`<li>${value.Name}</li>`)
+
+                    }) 
+                }
+
+                })
+
+        })
+
+    })
+
+
+</script>
