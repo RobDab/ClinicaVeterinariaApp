@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
@@ -97,5 +99,51 @@ namespace ClinicaVeterinariaApp.Controllers
             }
             finally { }
         }
-}
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(Email e)
+        {
+            MailAddress sender = new MailAddress(e.EmailSendUser);
+            MailAddress recipient = new MailAddress("lambotester@outlook.it");
+
+            MailMessage message = new MailMessage();
+            message.Subject = "Email inviata dal sito da: " + e.EmailSendUser;
+            message.Body = e.Message;
+            message.From = recipient;
+            message.To.Add(recipient);
+
+            SmtpClient client = new SmtpClient
+            {
+                Host = "smtp.office365.com",
+                Port = 25, //Recommended port is 587
+                EnableSsl = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("lambotester@outlook.it", "Prova12345"),
+
+            };
+            //client.Host = "smtp.office365.com";
+            //client.Port = 587;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.EnableSsl = false;
+            //client.UseDefaultCredentials = false;
+            //client.Credentials = new NetworkCredential("lambotester@outlook.it", "Prova12345");
+
+
+            //e.Attachment.SaveAs(Server.MapPath("/Content/" + e.Attachment.FileName));
+
+            //string NameFileToSend = Server.MapPath("/Content/" + e.Attachment.FileName);
+
+            //message.Attachments.Add(new Attachment(NameFileToSend));
+
+            client.Send(message);
+
+            return View();
+        }
+    }
 }

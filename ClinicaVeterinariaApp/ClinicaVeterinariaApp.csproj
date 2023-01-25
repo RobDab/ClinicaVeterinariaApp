@@ -152,6 +152,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animals.cs" />
     <Compile Include="Models\AppRole.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Exams.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\Species.cs" />
@@ -246,6 +247,7 @@
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Home\SearchAnimal.cshtml" />
     <Content Include="Views\Home\SearchAnimals.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
