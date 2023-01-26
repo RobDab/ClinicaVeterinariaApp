@@ -10,6 +10,7 @@ using ClinicaVeterinariaApp.Models;
 
 namespace ClinicaVeterinariaApp.Controllers
 {
+    [Authorize]
     public class SpeciesController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -91,6 +92,7 @@ namespace ClinicaVeterinariaApp.Controllers
         }
 
         // GET: Species/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

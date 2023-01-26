@@ -10,6 +10,7 @@ using ClinicaVeterinariaApp.Models;
 
 namespace ClinicaVeterinariaApp.Controllers
 {
+    [Authorize]
     public class AnimalsController : Controller
     {
         private ModelDBContext db = new ModelDBContext();

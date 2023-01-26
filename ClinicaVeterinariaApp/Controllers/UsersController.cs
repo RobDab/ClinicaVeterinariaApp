@@ -46,7 +46,7 @@ namespace ClinicaVeterinariaApp.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "user , admin")]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

@@ -10,6 +10,7 @@ using ClinicaVeterinariaApp.Models;
 
 namespace ClinicaVeterinariaApp.Controllers
 {
+    [Authorize]
     public class ExamsController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -71,6 +72,7 @@ namespace ClinicaVeterinariaApp.Controllers
             return View(exams);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Exams/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -108,7 +110,9 @@ namespace ClinicaVeterinariaApp.Controllers
             return View(exams);
         }
 
+
         // GET: Exams/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
