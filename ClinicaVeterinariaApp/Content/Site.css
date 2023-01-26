@@ -36,14 +36,19 @@ textarea {
 
 #logoImg {
     width:150px;
-    margin-left: 1em;
+    margin-left: 2.5em;
     margin-right: 2em;
 }
 
 .navbar {
-    background-color:rgb(10, 101, 0)
+    background-color:rgb(10, 101, 0);
 }
 
-.navbarList li {
-    color: whitesmoke;
+footer {
+    background-color: rgb(10, 101, 0);
 }
+
+.LogBtn{
+    max-width: 150px;
+}
+
