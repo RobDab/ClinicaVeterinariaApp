@@ -122,9 +122,10 @@ namespace ClinicaVeterinariaApp.Controllers
                 Host = "smtp.office365.com",
                 Port = 25, //Recommended port is 587
                 EnableSsl = false,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
+                //DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("lambotester@outlook.it", "Prova12345"),
+                TargetName= "STARTTLS/smtp.office365.com",
+                Credentials = new NetworkCredential("lambotester@outlook.it", "Prove12345"),
 
             };
             //client.Host = "smtp.office365.com";
