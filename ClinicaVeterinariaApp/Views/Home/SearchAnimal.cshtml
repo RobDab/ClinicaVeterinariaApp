@@ -21,10 +21,10 @@
 
                     </div>
                     <div class="text-center">
-                        <div class="w-50" id="append">
-
-                        </div>
-                        <dl class="dl-horizontal" id="appendDD"></dl>
+                        
+                       <div id="resultContainer" class="d-flex flex-wrap gap-3">
+                           
+                       </div>
                     </div>
                 </div>
             </div>
@@ -32,13 +32,6 @@
     </section>
 
    
-
-    
-
-    
-
-
-
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -56,18 +49,14 @@
                 dataType: "json",
                 url: 'GetAnimal',
                 success: function (animal) {
-                    console.log(animal);
-                
-                    $("#append").append('<img id="chipSearchImg" src="/Content/FileUpload/' + animal.UrlPhoto + '"/>');
-                    $("#appendDD").append("<dt> Nome </dt>  <dd>" + animal.Name + "</dd> <dt> Colore </dt> <dd>" + animal.Color + "</dd><dt>Data nascita</dt> <dd>" + animal.BirthDate + "</dd><dt>Data registrazione</dt><dd>" + animal.RegisterDate +"</dd >");
-                   
 
+                    $("#resultContainer").empty();
+                    $("#resultContainer").append('<a href="/Animals/Details/' + animal.IDAnimal + '"><div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + animal.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title">' + animal.Name + '</h5></div></div></a>')
                 },
                 error: function () {
 
-                   
-                    $("#append").append("<p> Errore, animale non trovato</p>");
-
+                    $("#resultContainer").empty();
+                    $("#resultContainer").append("<p> Errore, animale non trovato</p>");
                 }
 
             })
