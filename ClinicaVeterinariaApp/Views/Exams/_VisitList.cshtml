@@ -20,8 +20,8 @@
     <tr>
         
         <td>
-            @Html.DisplayFor(modelItem => item.ExamDate)
-
+            @*@Html.DisplayFor(modelItem => item.ExamDate,new { @format = "d" })*@
+            <span>@item.ExamDate.ToString("d")</span>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Exam)

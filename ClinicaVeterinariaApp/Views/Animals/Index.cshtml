@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
+            <span>@item.BirthDate.ToString("d")</span>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ChipNumber)
@@ -53,7 +53,7 @@
             @Html.DisplayFor(modelItem => item.HasOwner)
         </td>
         <td>
-            @Html.ActionLink("Storia medica", "Details", new { id=item.IDAnimal }) |
+            @Html.ActionLink("Anamnesi", "Details", new { id=item.IDAnimal }) |
             @Html.ActionLink("Modifica", "Edit", new { id=item.IDAnimal }) |
             @Html.ActionLink("Cancella", "Delete", new { id=item.IDAnimal })
         </td>

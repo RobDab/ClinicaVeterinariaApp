@@ -53,7 +53,7 @@ namespace ClinicaVeterinariaApp.Models
 
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data di nascita")]
         public DateTime BirthDate { get; set; }
 
