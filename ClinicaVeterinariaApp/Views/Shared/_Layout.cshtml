@@ -13,17 +13,62 @@
     <script src="https://kit.fontawesome.com/9a79bd6bbb.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand">@Html.ActionLink("Home", "Index", "Home")</a>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                <img src="/Content/FileUpload/logo-noBg-cut.png" id="logoImg" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse  fs-5" id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-2 mb-lg-0 text-center navbarListn ms-auto">
+                    <li class="nav-item">
+                        <i class="fa-solid fa-house me-1  ms-4 text-light"></i>
+                        <a class="nav-link text-light d-inline-block" aria-current="page" href="@Url.Action("Index","Home")"> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-envelope me-1 ms-4 text-light"></i>
+                        <a class="nav-link text-light d-inline-block" aria-current="page" href="@Url.Action("Contact","Home")"> Contatti</a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-bone me-1 ms-4 text-light"></i>
+                        <a class="nav-link text-light d-inline-block" href="#services"> Cerca un Pet</a>
+                    </li>
+                    @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </li>*@
+                    @*<li class="nav-item">
+                        <a class="nav-link">Disabled</a>
+                    </li>*@
+                </ul>
+              
+            </div>
+        </div>
+    </nav>
+
+
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="/Content/FileUpload/Logo-nobg.png" id="logoImg"/>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul ul class="nav navbar-nav" style="float:right">
-                    <li class="nav-item">
-                        @*<a class="nav-link">@Html.ActionLink("Cerca", "Search", "Home")</a>*@
-                        <a class="nav-link" href="#services">Cerca</a>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">-->
+    @*<a class="nav-link">@Html.ActionLink("Cerca", "Search", "Home")</a>*@
+    <!--<a class="nav-link" href="#services">Cerca</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">@Html.ActionLink("Contatti", "Contact", "Home")</a>
@@ -45,7 +90,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>-->
 
     <div class="container body-content">
         @RenderBody()
@@ -67,10 +112,10 @@
                         <button href="mailto:example@mail.it"><i class="bi bi-envelope-at-fill"></i></button>
                     </li>
                     <li>
-                        <button href="https://web.telegram.org/" ><i class="bi bi-telegram"></i></button>
+                        <button href="https://web.telegram.org/"><i class="bi bi-telegram"></i></button>
                     </li>
                     <li>
-                        <button href="https://it-it.facebook.com/" ><i class="bi bi-facebook"></i></button>
+                        <button href="https://it-it.facebook.com/"><i class="bi bi-facebook"></i></button>
                     </li>
                     <li>
                         <button href="tel:0123456789"><i class="bi bi-telephone-fill"></i></button>
@@ -82,16 +127,17 @@
                 @if (User.IsInRole("admin"))
                 {
                     <a href="@Url.Action("Index", "Users")" class="btn btn-link">Gestione Dipendenti</a>
-                }
+                    }
+
+
+                </div>
 
             </div>
 
-        </div>
 
-
-    </footer>
+        </footer>
 
 
 
-</body>
+    </body>
 </html>
