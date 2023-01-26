@@ -11,6 +11,20 @@ namespace ClinicaVeterinariaApp.Models
 
         public string RegisterDate { get; set; }
 
+        private int _dateRecovery;
+
+        public int DateRecovery
+        {
+            get 
+            {
+                var registerDate = Convert.ToDateTime(RegisterDate);
+                var dateNow = DateTime.Now;
+                TimeSpan ts = dateNow - registerDate;
+                int recovery = Convert.ToInt32(ts.TotalDays);
+                return recovery;
+            }
+           
+        }
         public string BirthDate { get; set; }
 
         public string Name { get; set; }
