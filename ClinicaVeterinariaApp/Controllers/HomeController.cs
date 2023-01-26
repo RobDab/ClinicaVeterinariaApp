@@ -108,20 +108,20 @@ namespace ClinicaVeterinariaApp.Controllers
         [HttpPost]
         public ActionResult Contact(Email e)
         {
-            MailAddress sender = new MailAddress(e.EmailSendUser);
+            MailAddress sender = new MailAddress("lambotester@outlook.it");
             MailAddress recipient = new MailAddress("lambotester@outlook.it");
 
             MailMessage message = new MailMessage();
             message.Subject = "Email inviata dal sito da: " + e.EmailSendUser;
             message.Body = e.Message;
-            message.From = recipient;
+            message.From = sender;
             message.To.Add(recipient);
 
             SmtpClient client = new SmtpClient
             {
                 Host = "smtp.office365.com",
-                Port = 25, //Recommended port is 587
-                EnableSsl = false,
+                Port = 587, //Recommended port is 587
+                EnableSsl = true,
                 //DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 TargetName= "STARTTLS/smtp.office365.com",
@@ -135,13 +135,15 @@ namespace ClinicaVeterinariaApp.Controllers
             //client.UseDefaultCredentials = false;
             //client.Credentials = new NetworkCredential("lambotester@outlook.it", "Prova12345");
 
+            if(e.Attachment != null){
+            
+            e.Attachment.SaveAs(Server.MapPath("/Content/" + e.Attachment.FileName));
 
-            //e.Attachment.SaveAs(Server.MapPath("/Content/" + e.Attachment.FileName));
+            string NameFileToSend = Server.MapPath("/Content/" + e.Attachment.FileName);
 
-            //string NameFileToSend = Server.MapPath("/Content/" + e.Attachment.FileName);
+            message.Attachments.Add(new Attachment(NameFileToSend));
 
-            //message.Attachments.Add(new Attachment(NameFileToSend));
-
+            }
             client.Send(message);
 
             return View();
