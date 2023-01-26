@@ -77,6 +77,7 @@ namespace ClinicaVeterinariaApp.Controllers
             {
 
                 List<AnimalsJSON> ListAnimal = new List<AnimalsJSON>();
+                
                 if (ArrIdParam.Count() > 0)
                 {
                     foreach (int SpecieID in ArrIdParam)

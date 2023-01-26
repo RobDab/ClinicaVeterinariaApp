@@ -6,23 +6,38 @@
 
 
 
-<div class="container">
 
-    <h2>Cerca animale smarrito tramite chip</h2>
 
-    <input type="text" id="stringChip" />
-    <br />
-    <button id="Search">Cerca</button>
+    <section id="searchChip">
+        <div class="container px-4 w-50">
+            <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh">
+                <div class="col-lg-8">
+                    <h2 class="text-center">Cerca animale smarrito tramite chip</h2>
+                    <div class="text-center">
 
-    <div>
-        <div id="append" class="w-50">
-            
+                        <input class="rounded-3" type="text" id="stringChip" />
+                        <br />
+                        <button class="btn btn-outline-success mt-2" id="Search">Cerca</button>
+
+                    </div>
+                    <div class="text-center">
+                        <div class="w-50" id="append">
+
+                        </div>
+                        <dl class="dl-horizontal" id="appendDD"></dl>
+                    </div>
+                </div>
+            </div>
         </div>
-        <dl class="dl-horizontal" id="appendDD"></dl>
-    </div>
+    </section>
+
+   
+
+    
+
+    
 
 
-</div>
 
 
 <script type="text/javascript">

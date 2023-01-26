@@ -2,4 +2,55 @@
     ViewBag.Title = "Home Page";
 }
 
-<p>Homepage</p>
+<header class="bg-primary bg-gradient text-white ">
+    <div class="d-flex flex-md-column px-4 text-center justify-content-center align-content-center " style="height:80vh">
+        <h1 class="fw-bolder">NOME CLINICA</h1>
+        <h2> Clinica veterinaria specializzata</h2>
+       
+        <a class="btn btn-lg btn-light" href="#about">Guarda le nostre sezioni! Inizia</a>
+    </div>
+</header>
+
+<section id="about">
+    <div class="container px-4 w-50">
+        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh>
+            <div class="col-lg-8">
+                <h2 class="text-center">Su di noi!</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a turpis feugiat augue dignissim molestie eget ac neque. Morbi rutrum mattis diam consectetur venenatis. Suspendisse risus magna, egestas sed interdum nec, semper sit amet arcu. Praesent ut varius risus, vitae vulputate felis.    </p>
+                <ul>
+                    <li>Etiam congue dignissim ligula vitae vehicula. </li>
+                    <li>Aliquam sed pellentesque nunc, nec bibendum magna. </li>
+                    <li>Nullam tellus nibh, elementum eget laoreet et, elementum eu mauris. Nunc nec congue nunc, ac rhoncus est. Integer accumsan sit amet nibh at posuere.</li>
+                    <li>Donec auctor justo sed turpis pulvinar mattis. Nullam viverra nisl eu lorem varius fringilla. Curabitur a volutpat sapien. In condimentum eu nisl non rhoncus.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-light" id="services">
+    <div class="container px-4 w-50">
+        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh>
+
+            <div class="col-lg-8">
+                <h2 class="text-center">I servizi:</h2>
+                <ul>
+                    <li>Hai smarrito il tuo animale? Cercalo tramite chip! : @Html.ActionLink("Cerca", "SearchAnimal", "Home") </li>
+                    <li>Vuoi addotare un animale smarrito? Visita gli animali trovati: @Html.ActionLink("Cerca", "SearchAnimals", "Home") </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container px-4 w-50">
+        <div class="d-flex flex-md-column px-4 text-center justify-content-center align-content-center mt-5 " style="height:80vh>
+
+            <div class="col-lg-8">
+                <h2>Vuoi altre info? <br /> Vai alla pagina contatti!</h2>
+                <button class="btn btn-info">Contatti</button>
+            </div>
+        </div>
+    </div>
+</section>

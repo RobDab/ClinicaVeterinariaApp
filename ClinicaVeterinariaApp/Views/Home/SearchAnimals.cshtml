@@ -4,26 +4,35 @@
     ViewBag.Title = "SearchAnimals";
 }
 
-<h2>SearchAnimals</h2>
+<section id="searchToggle">
+    <div class="container px-4 w-50">
+        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh">
+            <div class="col-lg-8">
+                <h2 class="text-center">Cerca animale da addotare!</h2>
+                <div class="d-flex flex-column">
 
-<div class="d-flex flex-column">
 
+                    @foreach (var item in ViewBag.SpecieList)
+                    {
+                        <div class="text-center">
 
-@foreach (var item in ViewBag.SpecieList)
-{
-    <div>
+                            <label for="@item.SpecieID">@item.Specie</label>
+                            <input type="checkbox" value="@item.SpecieID" id="@item.SpecieID" />
 
-    <label for="@item.SpecieID">@item.Specie</label>
-    <input type="checkbox" value="@item.SpecieID" id="@item.SpecieID" />
+                        </div>
+                    }
 
+                    <button id="Search" class="btn btn-outline-success mt-2">Cerca</button>
+                </div>
+
+                <div id="resultContainer" class="d-flex flex-wrap gap-3 justify-content-center">
+                </div>
+            </div>
+        </div>
     </div>
-}
+</section>
 
-    <button id="Search">Cerca</button>
-</div>
 
-<div id="resultContainer" class="d-flex flex-wrap gap-3 justify-content-center">
-</div>
 
 <script>
     $(document).ready(function () {
@@ -35,9 +44,9 @@
             $("input:checked").each(function () {
                 let ChkVal = parseInt($(this).val());
                 ArrID.push(ChkVal);
-               
-           })
-            
+
+            })
+
 
             $.ajax({
                 method: 'POST',
@@ -48,9 +57,9 @@
 
                     $.each(animals, function (index, value) {
                         console.log(value.Name);
-                        $("#resultContainer").append('<div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + value.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title">' + value.Name +'</h5></div></div>');
+                        $("#resultContainer").append('<div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + value.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title">' + value.Name + '</h5></div></div>');
                     });
-                    
+
                 },
                 error: function () {
                     $("#resultContainer").empty();
