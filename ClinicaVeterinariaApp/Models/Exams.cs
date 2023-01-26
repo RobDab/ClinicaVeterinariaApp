@@ -14,6 +14,7 @@ namespace ClinicaVeterinariaApp.Models
         public int IDAnimal { get; set; }
 
         [Column(TypeName = "date")]
+        //[DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime ExamDate { get; set; }
 
         [Required]
