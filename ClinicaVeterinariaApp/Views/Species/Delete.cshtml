@@ -1,13 +1,12 @@
 ﻿@model ClinicaVeterinariaApp.Models.Species
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Cancella Specie";
 }
 
-<h2>Elimina specie</h2>
 
-<h3>Sei sicuro di voler procedere?</h3>
-<div>
+<h3 class="page-title mt-4">Sei sicuro di voler procedere?</h3>
+<div class="container">
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -23,9 +22,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color my-4">
+            <input type="submit" value="Cancella" class="btn btn-danger btn-delete-species" /> |
+            <a class="btn btn-default btn-species mt-2" href="@Url.Action("Index", "Species")">Torna alla lista</a>
         </div>
     }
 </div>

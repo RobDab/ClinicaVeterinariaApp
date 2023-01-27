@@ -4,38 +4,58 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Utenti registrati</h2>
+<h2 class="page-title mt-4">Utenti registrati</h2>
 
-<p>
-    @Html.ActionLink("Aggiungi dipendente", "SignIn", "Users", null, new { @class = "btn btn-primary"})
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        
-        <th></th>
-    </tr>
+<div class="container">
+    <p>
+        <a href="@Url.Action("SignIn", "Users")" class="btn col-4 offset-4 my-3" style="background-color: rgb(26, 113, 17); color: white">Aggiungi dipendenti</a>
+    </p>
+    <table class="table table-success table-striped" id="species-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Role)
-        </td>
-       
-        <td>
-            <a href="@Url.Action("Delete", "Users", new { id = item.UserID })" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
 
-</table>
+            <th>
+                Gestione
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="user-row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+
+                <td class="text-center">
+                    <a href="@Url.Action("Delete", "Users", new { id = item.UserID })" class="btn-delete-users"><i class="fa-solid fa-trash text-danger"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+<script>
+ $(document).ready(function () {
+    $('.user-row').hover(function () {
+        $(this).find('a').show();
+    },
+        function () {
+            $(this).find('a').hide();
+        }
+    );
+ });
+
+
+</script>

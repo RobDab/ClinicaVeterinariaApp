@@ -4,17 +4,17 @@
     ViewBag.Title = "Specie";
 }
 
-<h2 class="page-title">Le specie presenti all'interno della clinica</h2>
+<h2 class="page-title mt-4">Le specie presenti all'interno della clinica</h2>
 
 <p>
-    <a href="@Url.Action("Create", "Species")" class="btn btn-success col-4 offset-4 my-3">Aggiungi una specie</a>
+    <a href="@Url.Action("Create", "Species")" class="btn col-4 offset-4 my-3" style="background-color: rgb(26, 113, 17); color: white">Aggiungi una specie</a>
 </p>
 <table class="table table-success table-striped" id="species-table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Specie)
         </th>
-        <th></th>
+        <th>Gestione</th>
     </tr>
 
 @foreach (var item in Model) {
