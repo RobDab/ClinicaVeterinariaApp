@@ -68,15 +68,18 @@ namespace ClinicaVeterinariaApp.Models
         public bool HasOwner { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "Nome Proprietario")]
         public string OwnerName { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "Cognome Proprietario")]
         public string OwnerLastname { get; set; }
 
         [StringLength(15)]
         public string UrlPhoto { get; set; }
 
         [NotMapped()]
+        [Display(Name = "Aggiungi foto")]
         public HttpPostedFileBase FileFoto { get; set; }
         public virtual Species Species { get; set; }
 

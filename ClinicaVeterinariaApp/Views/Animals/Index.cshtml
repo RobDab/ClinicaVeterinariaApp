@@ -7,7 +7,7 @@
 <h2>Lista Animali</h2>
 
 <p>
-    @Html.ActionLink("Aggiungi un nuovo animale", "Create", "Animals", null,  new { @class = "btn link-info" })
+    @Html.ActionLink("Aggiungi un nuovo animale", "Create", "Animals", null,  new { @class = "btn btn-outline-info" })
 </p>
 <table class="table table-success table-striped">
     <tr>
@@ -53,22 +53,22 @@
             @Html.DisplayFor(modelItem => item.HasOwner)
         </td>
         <td>
-            @Html.ActionLink("Storia medica", "Details", new { id = item.IDAnimal }, new { @class = "btn link-info" })
+            @Html.ActionLink("Storia medica", "Details", new { id = item.IDAnimal }, new { @class = "btn btn-outline-info" })
             <span>&nbsp</span>
             @{
                 //if (User.Identity.AuthenticationType.Equals("admin"))
                 if (Roles.IsUserInRole("admin"))
                 {
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn link-info" })
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-warning" })
                     <span>&nbsp</span>
-                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn link-info" });
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-danger" });
 
                 }
                 else
                 {
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn link-secondary disabled" })
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
                     <span>&nbsp</span>
-                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn link-secondary disabled" })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
                 }
             }
         </td>
