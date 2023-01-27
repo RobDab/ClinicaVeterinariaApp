@@ -23,10 +23,12 @@ body{
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select {
     max-width: 280px;
 }
+
+ 
+
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
@@ -100,7 +102,16 @@ footer {
     align-items: center;
 }
 
+.btn-species {
+    border-color: rgb(26, 113, 17);
+    color: rgb(26, 113, 17);
+    background-color: white;
+}
 
+.btn-species:hover {
+    background-color: rgb(26, 113, 17);
+    color: white;
+}
 
 
 

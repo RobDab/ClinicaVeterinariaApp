@@ -5,8 +5,8 @@
 @if (User.Identity.IsAuthenticated)
 {
     <div class="row mt-3 justify-content-around px-5 px-md-0 pt-5" style="height: 20vh;">
-        <a class=" col-5 col-md-4 btn btn-deafult btn-lg my-2 my-md-1" href="@Url.Action("Index","Animals")">Vai a Pazienti</a>
-        <a class=" col-5 col-md-4 btn btn-default btn-lg my-2 my-md-1" href="@Url.Action("Index","Species")">Vai a Specie</a>
+        <a class=" col-5 col-md-4 btn btn-deafult btn-lg my-2 my-md-1" href="@Url.Action("Index","Animals")">Vai a Pazienti<i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a class=" col-5 col-md-4 btn btn-default btn-lg my-2 my-md-1" href="@Url.Action("Index","Species")">Vai a Specie<i class="fa-solid fa-arrow-right ms-1"></i></a>
     </div>
 }
 else

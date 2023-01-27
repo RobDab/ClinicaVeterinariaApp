@@ -18,7 +18,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        
+
         <td>
             @Html.DisplayFor(modelItem => item.ExamDate)
 
@@ -29,9 +29,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.ExamNotes)
         </td>
-        <td>
-            @Html.ActionLink("Aggiorna", "Edit", new { id=item.ExamID }, new { @class = "btn btn-outline-warning" }) 
-        </td>
+        @if (Roles.IsUserInRole("admin"))
+        {
+            <td>
+                @Html.ActionLink("Aggiorna", "Edit", new { id = item.ExamID }, new { @class = "btn btn-outline-warning" })
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Aggiorna", "Edit", new { id = item.ExamID }, new { @class = "btn btn-outline-warning disabled" })
+            </td>
+        }
+
     </tr>
 }
 

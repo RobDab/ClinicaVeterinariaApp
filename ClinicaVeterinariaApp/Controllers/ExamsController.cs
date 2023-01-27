@@ -10,6 +10,8 @@ using ClinicaVeterinariaApp.Models;
 
 namespace ClinicaVeterinariaApp.Controllers
 {
+    [Authorize]
+    
     public class ExamsController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -21,6 +23,7 @@ namespace ClinicaVeterinariaApp.Controllers
             return View(exams.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult _VisitList(int? id)
         {
             List<Exams> list = db.Exams
@@ -72,6 +75,7 @@ namespace ClinicaVeterinariaApp.Controllers
         }
 
         // GET: Exams/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,6 +98,7 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "ExamID,ExamDate,Exam,ExamNotes")] Exams exams, int id)
         {
             if (ModelState.IsValid)
@@ -109,6 +114,7 @@ namespace ClinicaVeterinariaApp.Controllers
         }
 
         // GET: Exams/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,6 +132,7 @@ namespace ClinicaVeterinariaApp.Controllers
         // POST: Exams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Exams exams = db.Exams.Find(id);

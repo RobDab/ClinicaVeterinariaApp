@@ -4,12 +4,12 @@
     ViewBag.Title = "Details";
 }
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-5">
         <div class="col-5 " style="width:auto">
             <h4>Dettagli Animale </h4>
             <hr />
 
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-4" style="width: 18rem;">
                 @{ if (!Model.HasOwner)
                     {
                         <img src="~/Content/FileUpload/@Model.UrlPhoto" alt="Immagine animale" />
@@ -31,24 +31,35 @@
                         {
                             <li class="list-group-item">Nome proprietario: @Html.DisplayFor(model => model.OwnerName)</li>
                             <li class="list-group-item">Cognome proprietario: @Html.DisplayFor(model => model.OwnerLastname)</li>
-                        } }
+                        }
+                    }
                 </ul>
             </div>
 
         </div>
-        <div class="col-5" style="width:auto">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="col-5" style="width:auto">
 
-            @{
-                Html.RenderAction("_VisitList", "Exams", new { id = Model.IDAnimal });
-            }
-            <p>
-                @Html.ActionLink("Aggiungi visita", "Create", "Exams", new { id = Model.IDAnimal }, new { @class = "btn btn-outline-success" })
-            </p>
-        </div>
+                @{
+                    Html.RenderAction("_VisitList", "Exams", new
+                    {
+                        id = Model.IDAnimal
+                    });
+                }
+                <p>
+                    @Html.ActionLink("Aggiungi visita", "Create", "Exams", new
+                    {
+                        id = Model.IDAnimal
+                    }, new { @class = "btn btn-outline-success" })
+                </p>
+            </div>
+        }
+
     </div>
 </div>
-<div>
-    @Html.ActionLink("Torna all'anagrafica degli animali", "Index", "Animals", null, new { @class = "btn btn-outline-info mt-3" })
+<div class="text-center">
+    @Html.ActionLink("Torna all'anagrafica degli animali", "Index", "Animals", null, new { @class = "btn btn-default my-3 fw-bold btn-species" })
 </div>
 
 
