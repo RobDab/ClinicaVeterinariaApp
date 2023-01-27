@@ -49,10 +49,11 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
+        public ActionResult Create([Bind(Include = "IDAnimal,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
         {
             if (ModelState.IsValid)
             {
+                animals.RegisterDate = DateTime.Now;
                 if (animals.FileFoto != null)
                 {
                     string path = Server.MapPath("/Content/FileUpload/" + animals.FileFoto.FileName);
@@ -149,8 +150,14 @@ namespace ClinicaVeterinariaApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Animals animals = db.Animals.Find(id);
+
+            List<Exams> exams = db.Exams.Where(e => e.IDAnimal == id).ToList();
+
+            exams.ForEach(e => db.Exams.Remove(e));
             db.Animals.Remove(animals);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

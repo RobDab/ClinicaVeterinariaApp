@@ -2,41 +2,49 @@
     ViewBag.Title = "Home Page";
 }
 
-<header class="bg-primary bg-gradient text-white ">
-    <div class="d-flex flex-md-column px-4 text-center justify-content-center align-content-center " style="height:80vh">
-        <h1 class="fw-bolder">NOME CLINICA</h1>
-        <h2> Clinica veterinaria specializzata</h2>
-       
-        <a class="btn btn-lg btn-light" href="#about">Guarda le nostre sezioni! Inizia</a>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row mt-3 justify-content-around px-5 px-md-0 pt-5" style="height: 20vh;">
+        <a class=" col-5 col-md-4 btn btn-deafult btn-lg my-2 my-md-1" href="@Url.Action("Index","Animals")">Vai a Pazienti</a>
+        <a class=" col-5 col-md-4 btn btn-default btn-lg my-2 my-md-1" href="@Url.Action("Index","Species")">Vai a Specie</a>
+    </div>
+}
+else
+{
+    <section id="aboutUs">
+        <div class="row bg-light">
+            <div class="col-4 pt-5">
+                <img id="aboutUsImg" src="~/Content/FileUpload/Dog-noBg.png" style="width:100%;" />
+            </div>
+            <div class="col-8 col-md-6 pt-4 ps-2">
+                <h2 class=" pt-3">Su di noi!</h2>
+                <p class="me-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a turpis feugiat augue dignissim molestie eget ac neque. 
+                 </p>
+            </div>
+        </div>
+    </section>
+}
+
+<header class="py-5" id="header">
+    <div class="d-flex flex-column px-4 text-center">
+        <h1 class="fw-bolder text-light" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">LAMBRO'S</h1>
+        <h2 class=" text-light"> Clinica veterinaria specializzata</h2>
+
+        <a class="btn btn-default btn-lg w-75 mx-auto mt-5  text-light" href="@Url.Action("SearchAnimals","Home")"><i class="fa-solid fa-paw me-2"></i>Adotta dal rifugio</a>
     </div>
 </header>
 
-<section id="about" >
-    <div class="container px-4 w-50">
-        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh;">
-            <div class="col-lg-8">
-                <h2 class="text-center">Su di noi!</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a turpis feugiat augue dignissim molestie eget ac neque. Morbi rutrum mattis diam consectetur venenatis. Suspendisse risus magna, egestas sed interdum nec, semper sit amet arcu. Praesent ut varius risus, vitae vulputate felis.    </p>
-                <ul>
-                    <li>Etiam congue dignissim ligula vitae vehicula. </li>
-                    <li>Aliquam sed pellentesque nunc, nec bibendum magna. </li>
-                    <li>Nullam tellus nibh, elementum eget laoreet et, elementum eu mauris. Nunc nec congue nunc, ac rhoncus est. Integer accumsan sit amet nibh at posuere.</li>
-                    <li>Donec auctor justo sed turpis pulvinar mattis. Nullam viverra nisl eu lorem varius fringilla. Curabitur a volutpat sapien. In condimentum eu nisl non rhoncus.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <section class="bg-light" id="services">
-    <div class="container px-4 w-50">
-        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh;">
+    <div class="container px-4">
+        <div class="d-flex flex-md-column px-4 align-content-center  py-5">
 
-            <div class="col-lg-8">
-                <h2 class="text-center">I servizi:</h2>
-                <ul>
-                    <li>Hai smarrito il tuo animale? Cercalo tramite chip! : @Html.ActionLink("Cerca", "SearchAnimal", "Home") </li>
-                    <li>Vuoi addotare un animale smarrito? Visita gli animali trovati: @Html.ActionLink("Cerca", "SearchAnimals", "Home") </li>
+            <div>
+                <h2 class="text-center mb-5">I servizi:</h2>
+                <ul id="searchList">
+                    <li>Hai smarrito il tuo animale? @Html.ActionLink("Cerca tramite codice chip", "SearchAnimal", "Home", null, new { @class= "btn btn-deafault searchBtn" }) </li>
+                    <li>Vuoi addotare un trovatello?   @Html.ActionLink("Scopri il tuo prossimo miglior amico", "SearchAnimals", "Home", null, new { @class="btn btn-default searchBtn"}) </li>
                 </ul>
             </div>
         </div>
@@ -44,13 +52,14 @@
 </section>
 
 <section id="contact">
-    <div class="container px-4 w-50">
-        <div class="d-flex flex-md-column px-4 text-center justify-content-center align-content-center mt-5 " style="height:80vh;">
-
-            <div class="col-lg-8">
-                <h2>Vuoi altre info? <br /> Vai alla pagina contatti!</h2>
-               @Html.ActionLink("Contatti", "Contact", "Home", null, new {@class="btn btn-info"})
-            </div>
+    <div class="row justify-content-between mt-5 ps-3">
+        <div class="col-7 ps-5 text-md-center">
+            <h3>Reperibili <b>h/24</b></h3>
+            <p class="fs-5">Facci sapere come <br />possiamo aiutarti!</p>
+            <a class="btn btn-default searchBtn" href="@Url.Action("Contact","Home")">Contatti</a>
+        </div>
+        <div class="col-3 pe-0">
+            <img class="float-end" src="~/Content/FileUpload/Pappagallo-noBg.png" id="ImgContacts"/>
         </div>
     </div>
 </section>

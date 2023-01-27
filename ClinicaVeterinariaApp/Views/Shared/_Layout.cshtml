@@ -13,77 +13,71 @@
     <script src="https://kit.fontawesome.com/9a79bd6bbb.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand">@Html.ActionLink("Home", "Index", "Home")</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul ul class="nav navbar-nav" style="float:right">
-                    <li class="nav-item">
-                        @*<a class="nav-link">@Html.ActionLink("Cerca", "Search", "Home")</a>*@
-                        <a class="nav-link" href="#services">Cerca</a>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">
+               
+                    <img src="/Content/FileUpload/logo-noBg-cut.png" id="logoImg" />
+                
+            </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  fs-5" id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0 navbarList ms-auto">
+                <li class="nav-item mx-2">
+                    <i class="fa-solid fa-house  mx-2 text-light"></i>
+                    <a class="nav-link text-light d-inline-block ps-0" aria-current="page" href="@Url.Action("Index","Home")"> Home</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <i class="fa-solid fa-envelope  mx-2 text-light"></i>
+                    <a class="nav-link text-light d-inline-block ps-0" aria-current="page" href="@Url.Action("Contact","Home")"> Contatti</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <i class="fa-solid fa-bone  mx-2 text-light"></i>
+                    <a class="nav-link text-light d-inline-block ps-0" href="/Home/Index/#services"> Cerca un Pet</a>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item ms-2 btn btn-success fs-5 LogBtn">
+                        <i class="fa-solid fa-user mx-2 text-light"></i>
+                        <a class="nav-link text-light  d-inline-block btn btn-success py-0" href="@Url.Action("Logout","Users")">Log out</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link">@Html.ActionLink("Contatti", "Contact", "Home")</a>
+
+                }
+                else
+                {
+                    <li class="nav-item btn btn-success fs-5 ms-2 LogBtn">
+                        <i class="fa-solid fa-user text-light"></i>
+                        <a class="nav-link text-light  d-inline-block py-0" href="@Url.Action("Login","Users")">Log In</a>
                     </li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Logout","Users")">Log out</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Login","Users")">Log In</a>
-                        </li>
 
-                    }
+                }
+            </ul>
 
-                </ul>
-            </div>
+        </div>
         </div>
     </nav>
 
-    <div class="container body-content">
+
+    <div class="">
         @RenderBody()
     </div>
 
-    <hr />
-    <footer class="footer navbar-fixed-bottom text-center">
-        <div>
+    
+    <footer class="footer navbar-fixed-bottomt text-light pt-3">
+        <div class="d-flex justify-content-between pb-3">
 
-            <div>
-
-                <p>&copy; @DateTime.Now.Year - Clinica Vetrinaria</p>
-
-            </div>
-
-            <div>
-                <ul class="list-unstyled list-inline">
-                    <li>
-                        <button href="mailto:example@mail.it"><i class="bi bi-envelope-at-fill"></i></button>
-                    </li>
-                    <li>
-                        <button href="https://web.telegram.org/" ><i class="bi bi-telegram"></i></button>
-                    </li>
-                    <li>
-                        <button href="https://it-it.facebook.com/" ><i class="bi bi-facebook"></i></button>
-                    </li>
-                    <li>
-                        <button href="tel:0123456789"><i class="bi bi-telephone-fill"></i></button>
-                    </li>
-                </ul>
+            <div class="d-flex flex-column ps-3">
+                <span>&copy; @DateTime.Now.Year - <b>Lambro's</b> Clinica Veterinaria </span>
+                <span class="text-decoration-underline">Tel: +39 / 080 1234567 </span>
             </div>
 
             <div>
                 @if (User.IsInRole("admin"))
                 {
-                    <a href="@Url.Action("Index", "Users")" class="btn btn-link">Gestione Dipendenti</a>
+                    <a href="@Url.Action("Index", "Users")" class="btn btn-link text-light me-3 fs-5">Gestione Dipendenti</a>
                 }
-
             </div>
 
         </div>
@@ -93,5 +87,5 @@
 
 
 
-</body>
+    </body>
 </html>
