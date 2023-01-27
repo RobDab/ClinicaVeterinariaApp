@@ -6,12 +6,12 @@
 
 
 
-
+<div class="container">
 
     <section id="searchChip">
-        <div class="container px-4 w-50">
-            <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh">
-                <div class="col-lg-8">
+        <div class="container px-4 text-center">
+            <div class="d-flex flex-md-column px-4 justify-content-center align-content-center m-5 " >
+                <div class="col">
                     <h2 class="text-center">Cerca animale smarrito tramite chip</h2>
                     <div class="text-center">
 
@@ -20,16 +20,21 @@
                         <button class="btn btn-outline-success mt-2" id="Search">Cerca</button>
 
                     </div>
-                    <div class="text-center">
-                        
-                       <div id="resultContainer" class="d-flex flex-wrap gap-3">
-                           
-                       </div>
+                    <div class="text-center d-flex justify-content-center mt-3">
+
+                        <div id="resultContainer" >
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+</div>
 
    
 
@@ -51,7 +56,7 @@
                 success: function (animal) {
 
                     $("#resultContainer").empty();
-                    $("#resultContainer").append('<a href="/Animals/Details/' + animal.IDAnimal + '"><div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + animal.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title">' + animal.Name + '</h5></div></div></a>')
+                    $("#resultContainer").append('<a href="/Animals/Details/' + animal.IDAnimal + '"><div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + animal.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body"><h5 class="card-title btn btn-outline-success">' + animal.Name + '</h5></div></div></a>')
                 },
                 error: function () {
 
