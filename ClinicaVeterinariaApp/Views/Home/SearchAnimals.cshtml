@@ -4,34 +4,38 @@
     ViewBag.Title = "SearchAnimals";
 }
 
-<section id="searchToggle">
-    <div class="container px-4 w-50">
-        <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 " style="height:80vh">
-            <div class="col-lg-8">
-                <h2 class="text-center">Cerca animale da addotare!</h2>
-                <div class="d-flex flex-column">
+<div class="container">
+    <section id="searchToggle">
+        <div class="container px-4 text-center">
+            <div class="d-flex flex-md-column px-4 justify-content-center align-content-center mt-5 ">
+                <div class="col">
+                    <h2 class="text-center">Cerca animale da addotare!</h2>
+                    <div class="d-flex flex-column">
 
 
-                    @foreach (var item in ViewBag.SpecieList)
-                    {
-                        <div class="text-center">
+                        @foreach (var item in ViewBag.SpecieList)
+                        {
+                            <div class="text-center">
 
-                            <label for="@item.SpecieID">@item.Specie</label>
-                            <input type="checkbox" value="@item.SpecieID" id="@item.SpecieID" />
+                                <label for="@item.SpecieID">@item.Specie</label>
+                                <input type="checkbox" value="@item.SpecieID" id="@item.SpecieID" />
 
+                            </div>
+                        }
+
+                        <button id="Search" class="btn btn-outline-success m-2">Cerca</button>
+                    </div>
+
+                    <div class="">
+                        <div id="resultContainer" class="d-flex flex-wrap  justify-content-center">
                         </div>
-                    }
 
-                    <button id="Search" class="btn btn-outline-success mt-2">Cerca</button>
-                </div>
-
-                <div id="resultContainer" class="d-flex flex-wrap gap-3 justify-content-center">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
+</div>
 
 
 <script>
@@ -57,7 +61,7 @@
 
                     $.each(animals, function (index, value) {
                         console.log(value.Name);
-                        $("#resultContainer").append('<div class="card" style="width: 18rem;"><img src="/Content/FileUpload/' + value.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body text-center"><h5 class="card-title">' + value.Name + '</h5><p> Giorni di ricovero presso la clinica: ' + value.DateRecovery + '</p ></div></div > ');
+                        $("#resultContainer").append('<a href="/Animals/Details/' + value.IDAnimal + '"><div class="card m-3" style="width: 18rem;"><img src="/Content/FileUpload/' + value.UrlPhoto + '" class="card-img-top" alt="animal image"><div class="card-body text-center"><h5 class="card-title btn btn-outline-success">' + value.Name + '</h5></a><p> Giorni di ricovero presso la clinica: ' + value.DateRecovery + '</p ></div></div > ');
                     });
 
                 },

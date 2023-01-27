@@ -4,75 +4,80 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Animali</h2>
+<div class="container ">
+    <h2>Lista Animali</h2>
 
-<p>
-    @Html.ActionLink("Aggiungi un nuovo animale", "Create", "Animals", null,  new { @class = "btn btn-outline-info" })
-</p>
-<table class="table table-success table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Species.Specie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChipNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HasOwner)
-        </th>
-        <th>Gestione</th>
-    </tr>
+    <p>
+        @Html.ActionLink("Aggiungi un nuovo animale", "Create", "Animals", null, new { @class = "btn btn-default btn-species fw-bold" })
+    </p>
+    <div class="mb-lg-5">
+        <table class="table table-success table-striped ">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Species.Specie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChipNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HasOwner)
+                </th>
+                <th>Gestione</th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Species.Specie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChipNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasOwner)
-        </td>
-        <td>
-            @Html.ActionLink("Storia medica", "Details", new { id = item.IDAnimal }, new { @class = "btn btn-outline-info" })
-            <span>&nbsp</span>
-            @{
-                //if (User.Identity.AuthenticationType.Equals("admin"))
-                if (Roles.IsUserInRole("admin"))
-                {
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-warning" })
-                    <span>&nbsp</span>
-                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-danger" });
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Species.Specie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChipNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HasOwner)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Storia medica", "Details", new { id = item.IDAnimal }, new { @class = "btn btn-outline-success fw-bold" })
+                        <span>&nbsp</span>
+                        @{
+                            //if (User.Identity.AuthenticationType.Equals("admin"))
+                            if (Roles.IsUserInRole("admin"))
+                            {
+                                @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-warning text-dark" })
+                                <span>&nbsp</span>
+                                @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-danger fw-bold" });
 
-                }
-                else
-                {
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
-                    <span>&nbsp</span>
-                    @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
-                }
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Modifica", "Edit", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
+                                <span>&nbsp</span>
+                                @Html.ActionLink("Cancella", "Delete", new { id = item.IDAnimal }, new { @class = "btn btn-outline-secondary disabled" })
+                            }
+                        }
+                    </td>
+                </tr>
             }
-        </td>
-    </tr>
-}
 
-</table>
+        </table>
+    </div>
+</div>

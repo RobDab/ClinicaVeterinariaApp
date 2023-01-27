@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2 class="text-center">Aggiungi un nuovo animale</h2>
+<h2 class="text-center mt-3">Aggiungi un nuovo animale</h2>
 
 
 @using (Html.BeginForm("Create", "Animals", FormMethod.Post, new {@enctype = "multipart/form-data"})) 
@@ -19,7 +19,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-auto">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SpecieID, "SpecieID", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.SpecieID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-auto">
 
                     @Html.DropDownList("SpecieID", null, htmlAttributes: new { @class = "form-control" })
@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-auto">
 
                     @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-auto">
 
                     @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -54,7 +54,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.HasChip, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.HasChip, htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-auto">
 
                     <div class="checkbox">
@@ -67,7 +67,7 @@
             <div id="NumberChip">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ChipNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ChipNumber, htmlAttributes: new { @class = "control-label" })
                     <div class="col-md-auto">
 
                         @Html.EditorFor(model => model.ChipNumber, new { htmlAttributes = new { @class = "form-control" } })
@@ -79,7 +79,7 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.HasOwner, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.HasOwner, htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-auto">
 
                     <div class="checkbox">
@@ -92,7 +92,7 @@
             <div id="OwnerIdentity">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OwnerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.OwnerName, htmlAttributes: new { @class = "control-label " })
                     <div class="col-md-auto">
 
                         @Html.EditorFor(model => model.OwnerName, new { htmlAttributes = new { @class = "form-control" } })
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OwnerLastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.OwnerLastname, htmlAttributes: new { @class = "control-label " })
                     <div class="col-md-auto">
 
                         @Html.EditorFor(model => model.OwnerLastname, new { htmlAttributes = new { @class = "form-control" } })
@@ -114,7 +114,7 @@
             <div id="PhotoAnimal">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FileFoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.FileFoto, htmlAttributes: new { @class = "control-label " })
                     <div class="col-md-auto">
 
                         @Html.TextBoxFor(model => model.FileFoto, new { @class = "form-control", @type = "file", @accept = "image/png, image/jpeg, image/jpg" })
@@ -135,7 +135,7 @@
 </div>
 }
 
-<div>
+<div class="m-5">
     @Html.ActionLink("Torna all'anagrafica degli animali", "Index", "Animals", null, new { @class = "btn btn-outline-info" })
 </div>
 
