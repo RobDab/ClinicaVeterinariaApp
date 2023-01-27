@@ -30,7 +30,7 @@ namespace ClinicaVeterinariaApp.Controllers
                 Animals animal = db.Animals.Where(a => a.ChipNumber == strChip).FirstOrDefault();
                 if (animal != null)
                 {
-                    
+
                     AnimalsJSON animalToReturn = new AnimalsJSON()
                     {
                         IDAnimal = animal.IDAnimal,
@@ -41,7 +41,7 @@ namespace ClinicaVeterinariaApp.Controllers
                         Color = animal.Color,
                         ChipNumber = animal.ChipNumber,
                         HasOwner = animal.HasOwner,
-                        UrlPhoto = animal.UrlPhoto
+                        UrlPhoto = animal.UrlPhoto,
                     };
 
                     if (animal.HasOwner)
@@ -49,8 +49,6 @@ namespace ClinicaVeterinariaApp.Controllers
                         animalToReturn.OwnerName = animal.OwnerName;
                         animalToReturn.OwnerLastname = animal.OwnerLastname;    
                     }
-
-
 
                     return Json(animalToReturn, JsonRequestBehavior.AllowGet);
                 }
@@ -60,8 +58,9 @@ namespace ClinicaVeterinariaApp.Controllers
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }
-            catch
+            catch(Exception ex) 
             {
+                
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
             finally { }

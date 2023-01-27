@@ -14,14 +14,18 @@ namespace ClinicaVeterinariaApp.Models
         public int IDAnimal { get; set; }
 
         [Column(TypeName = "date")]
-        //[DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data Esame")]
         public DateTime ExamDate { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Tipologia esame")]
         public string Exam { get; set; }
 
         [Required]
+        [Display(Name = "Note")]
         public string ExamNotes { get; set; }
 
         public virtual Animals Animals { get; set; }

@@ -49,10 +49,11 @@ namespace ClinicaVeterinariaApp.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDAnimal,RegisterDate,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
+        public ActionResult Create([Bind(Include = "IDAnimal,Name,SpecieID,Color,BirthDate,HasChip,ChipNumber,HasOwner,OwnerName,OwnerLastname,FileFoto")] Animals animals)
         {
             if (ModelState.IsValid)
             {
+                animals.RegisterDate = DateTime.Now;
                 if (animals.FileFoto != null)
                 {
                     string path = Server.MapPath("/Content/FileUpload/" + animals.FileFoto.FileName);
