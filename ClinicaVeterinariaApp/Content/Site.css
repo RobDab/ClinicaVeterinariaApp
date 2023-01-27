@@ -101,6 +101,25 @@ footer {
 }
 
 
+.btn-species {
+    border-color: rgb(26, 113, 17);
+    color: rgb(26, 113, 17);
+    background-color: white;
+}
+
+.btn-species:hover {
+    background-color: rgb(26, 113, 17);
+    color: white;
+}
+
+.btn-delete-species{
+    margin-top: 5px;
+}
+
+.btn-delete-users{
+    display:none;
+}
+
 
 
 

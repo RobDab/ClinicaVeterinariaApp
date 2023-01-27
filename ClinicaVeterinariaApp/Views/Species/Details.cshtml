@@ -4,22 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2 class="page-title">Dettagli specie</h2>
+<h2 class="page-title mt-4">Dettagli specie</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Specie)
-        </dt>
+<div class="container">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Specie)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Specie)
-            <a href="@Url.Action("Edit", "Species", new { id = Model.SpecieID })"><i class="fa-solid fa-pen-to-square text-success"></i></a>
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Specie)
+                <a href="@Url.Action("Edit", "Species", new { id = Model.SpecieID })"><i class="fa-solid fa-pen-to-square text-success"></i></a>
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        <a class="btn btn-default btn-species mt-2" href="@Url.Action("Index", "Species")">Torna alla lista</a>
+    </p>
+
 </div>
-<p>
-    <a class="btn btn-outline-success mt-2" href="@Url.Action("Index", "Species")">Torna alla lista</a>
-</p>
