@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<ClinicaVeterinariaApp.Models.Species>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Specie";
 }
 
-<h2>Index</h2>
+<h2 class="page-title">Le specie presenti all'interno della clinica</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Species")" class="btn btn-success col-4 offset-4 my-3">Aggiungi una specie</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Specie)
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Specie)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SpecieID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SpecieID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SpecieID })
+            <a href="@Url.Action("Edit", "Species", new { id = item.SpecieID })"><i class="fa-solid fa-pen-to-square text-success"></i></a> |
+            <a href="@Url.Action("Details", "Species", new { id = item.SpecieID })"><i class="fa-solid fa-circle-info text-warning"></i></a> |
+            <a href="@Url.Action("Delete", "Species", new { id = item.SpecieID })"><i class="fa-solid fa-trash text-danger"></i></a> 
         </td>
     </tr>
 }
