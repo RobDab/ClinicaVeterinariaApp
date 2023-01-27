@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -41,14 +45,43 @@ textarea {
 }
 
 .navbar {
-    background-color:rgb(10, 101, 0);
+    background-color: rgb(26, 113, 17);
 }
 
 footer {
-    background-color: rgb(10, 101, 0);
+    background-color: rgb(26, 113, 17);
 }
 
 .LogBtn{
-    max-width: 150px;
+    max-width: 170px;
+    
+}
+
+#header {
+    background-color: rgb(26, 113, 17);
+}
+
+#aboutUsImg{
+    max-width: 300px;
+    
+}
+
+#ImgContacts {
+    max-width: 300px;
+}
+
+.searchBtn {
+    background-color: rgb(26, 113, 17);
+    width: 70%;
+    max-width: 200px;
+    margin-block: 1em;
+    color: whitesmoke;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#searchList li{
+    list-style: none;
+    text-align:center;
 }
 
