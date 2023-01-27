@@ -4,13 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Cancellazione profilo Dipendente</h2>
-
-<h3>Sicuro di eliminare questo utente?</h3>
-<div>
+<h3 class="page-title pt-5">Sicuro di eliminare questo utente?</h3>
+<div class="container">
     
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal text-center">
         <dt>
             @Html.DisplayNameFor(model => model.Username)
         </dt>
@@ -35,9 +33,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color text-center pt-5">
+            <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+            @Html.ActionLink("Back to List", "Index", "Users", null , new { @class= "btn btn-default"})
         </div>
     }
 </div>
