@@ -43,20 +43,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-md-6">
-
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Attachment, htmlAttributes: new { @class = "control-label" })
-                                        <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.Attachment, new { @class = "form-control", @type = "file" })
-                                            @Html.ValidationMessageFor(model => model.Attachment, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
                             <div class="row text-center">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -67,10 +54,31 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="d-flex text-center m-3">
+                                    <label for="AttachmentChk">Allegato</label>
+                                    <input type="checkbox" id="AttachmentChk" />
+
+                                    <div id="BoxAttachmentChk">
+
+                                        <div>
+
+
+                                            <div class="form-group">
+                                                <div class="col text-center">
+                                                    @Html.TextBoxFor(model => model.Attachment, new { @class = "form-control" , @type = "file" })
+                                                    @Html.ValidationMessageFor(model => model.Attachment, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Invia" class="btn btn-default" />
+                                            <input type="submit" value="Invia" class="btn btn-outline-success" />
                                         </div>
                                     </div>
                                 </div>
@@ -86,16 +94,16 @@
                 <hr />
                 <ul class="list-unstyled list-inline text-center d-flex mt-2 w-50 justify-content-between mx-auto">
                     <li>
-                        <a href="https://www.instagram.com/" class="btn btn-light fs-3"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/" class="btn btn-outline-success fs-3"><i class="fa-brands fa-instagram"></i></a>
                     </li>
                     <li>
-                        <a href="https://web.telegram.org/" class="btn btn-light fs-3"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://web.telegram.org/" class="btn btn-outline-success fs-3"><i class="fa-brands fa-telegram"></i></a>
                     </li>
                     <li>
-                        <a href="https://it-it.facebook.com/" class="btn btn-light fs-3"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://it-it.facebook.com/" class="btn btn-outline-success fs-3"><i class="fa-brands fa-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="tel:0123456789" class="btn btn-light fs-3"><i class="fa-solid fa-phone-flip"></i></a>
+                        <a href="tel:0123456789" class="btn btn-outline-success fs-3"><i class="fa-solid fa-phone-flip"></i></a>
                     </li>
                 </ul>
             </div>
@@ -104,6 +112,15 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+<script>
+    $(document).ready(function () {
+        $("#BoxAttachmentChk").hide();
+
+        $('#AttachmentChk').change(function () {
+
+            $("#BoxAttachmentChk").slideToggle(600);
+        }
+        )
+    })
+</script>
