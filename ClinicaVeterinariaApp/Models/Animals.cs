@@ -18,25 +18,14 @@ namespace ClinicaVeterinariaApp.Models
         [Key]
         public int IDAnimal { get; set; }
 
-        private DateTime _registerDate;
+        //private DateTime _registerDate;
 
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime RegisterDate 
-        {
-
-            get
-            {
-                return this._registerDate;
-            }
-            
-            set
-            {
-                _registerDate = DateTime.Now;
-
-            }
-        }
+        [Display(Name = "Data registrazione")]
+        public DateTime RegisterDate { get; set; }
+       
 
         [Required]
         [StringLength(20)]
