@@ -150,8 +150,14 @@ namespace ClinicaVeterinariaApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Animals animals = db.Animals.Find(id);
+
+            List<Exams> exams = db.Exams.Where(e => e.IDAnimal == id).ToList();
+
+            exams.ForEach(e => db.Exams.Remove(e));
             db.Animals.Remove(animals);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
